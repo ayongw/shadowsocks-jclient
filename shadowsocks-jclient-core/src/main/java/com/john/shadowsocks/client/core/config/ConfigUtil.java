@@ -28,6 +28,7 @@ public class ConfigUtil {
 
     /**
      * 加载配置文件信息
+     * @return null 如果未能正确定加载（指定位置不存在配置信息）
      */
     public static ClientServerConfig loadConfig() {
         try {
