@@ -2,9 +2,11 @@ package com.john.shadowsocks.client.util.io;
 
 import java.io.File;
 import java.io.FileFilter;
-import java.util.ArrayList;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipFile;
 
 /**
  * 〈一句话功能简述〉<br/>
@@ -168,7 +170,7 @@ public class ClassUtil {
     private static void fillClass(String className, String packageName, List<Class> classes, ClassFilter classFilter) {
         if (checkClassName(className, packageName)) {
             try {
-                final Class clazz = Class.forName(className, Boolean.FALSE, ClassUtils.class.getClassLoader());
+                final Class clazz = Class.forName(className, Boolean.FALSE, ClassUtil.class.getClassLoader());
                 if (checkClassFilter(classFilter, clazz)) {
                     classes.add(clazz);
                 }
@@ -177,7 +179,6 @@ public class ClassUtil {
             }
         }
     }
-    private static void get
 
 
     private static String[] getClassPathArray() {
