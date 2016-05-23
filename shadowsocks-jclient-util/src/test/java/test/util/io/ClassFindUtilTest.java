@@ -1,7 +1,7 @@
 package test.util.io;
 
 import com.john.shadowsocks.client.util.io.ClassFilter;
-import com.john.shadowsocks.client.util.io.ClassUtil;
+import com.john.shadowsocks.client.util.io.ClassFindUtil;
 import org.junit.Before;
 import org.junit.Test;
 import test.util.io.mockdata.A;
@@ -16,7 +16,7 @@ import java.lang.reflect.Modifier;
  * @see [相关类/方法]（可选）
  * @since [产品/模块版本] （可选）
  */
-public class ClassUtilTest {
+public class ClassFindUtilTest {
     private ClassFilter filter;
 
     @Before
@@ -36,7 +36,7 @@ public class ClassUtilTest {
 
     @Test
     public void testScanClassTest() throws Exception {
-        for (Class clazz : ClassUtil.scanPackage("test.util", filter)) {
+        for (Class clazz : ClassFindUtil.scanPackage("test.util", filter)) {
             System.out.println(clazz);
         }
 

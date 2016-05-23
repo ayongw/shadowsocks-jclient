@@ -16,7 +16,7 @@ import java.util.zip.ZipFile;
  * @see [相关类/方法]（可选）
  * @since [产品/模块版本] （可选）
  */
-public class ClassUtil {
+public class ClassFindUtil {
     private static final String CLASS_EXT = ".class";
     private static final String JAR_FILE_EXT = ".jar";
     private static final String ERROR_MESSAGE = "packageName can't be null";
@@ -24,6 +24,18 @@ public class ClassUtil {
     private static final String ZIP_SLASH = "/";
     private static final String BLACK = "";
     private static final ClassFilter NULL_CLASS_FILTER = null;
+    /**
+     * Convert a "."-based fully qualified class name to a "/"-based resource path.
+     * @param className the fully qualified class name
+     * @return the corresponding resource path, pointing to the class
+     */
+    public static String convertClassNameToResourcePath(String className) {
+        if(StringUtil.isBlank(className)) {
+            throw new NullPointerException("The class name is null!");
+        }
+        return className.replace('.', '/');
+    }
+
     /**
      * (1) 文件过滤器，过滤掉不需要的文件
      **/
@@ -170,7 +182,7 @@ public class ClassUtil {
     private static void fillClass(String className, String packageName, List<Class> classes, ClassFilter classFilter) {
         if (checkClassName(className, packageName)) {
             try {
-                final Class clazz = Class.forName(className, Boolean.FALSE, ClassUtil.class.getClassLoader());
+                final Class clazz = Class.forName(className, Boolean.FALSE, ClassFindUtil.class.getClassLoader());
                 if (checkClassFilter(classFilter, clazz)) {
                     classes.add(clazz);
                 }
