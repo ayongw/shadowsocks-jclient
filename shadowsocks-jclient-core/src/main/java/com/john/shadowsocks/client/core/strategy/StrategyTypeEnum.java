@@ -21,6 +21,20 @@ public enum StrategyTypeEnum {
     }
 
     /**
+     *
+     * @param key
+     * @return
+     */
+    public static StrategyTypeEnum getFromKey(String key) {
+        for(StrategyTypeEnum ste : values()) {
+            if(ste.key.equalsIgnoreCase(key)) {
+                return ste;
+            }
+        }
+        return null;
+    }
+
+    /**
      * 策略key值
      *
      * @return

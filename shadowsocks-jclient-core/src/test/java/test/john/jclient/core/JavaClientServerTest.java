@@ -1,6 +1,6 @@
 package test.john.jclient.core;
 
-import com.john.shadowsocks.client.core.ClientServer;
+import com.john.shadowsocks.client.core.JavaClientServer;
 import com.john.shadowsocks.client.core.config.ClientServerConfig;
 import com.john.shadowsocks.client.core.config.ConfigUtil;
 import org.junit.Test;
@@ -19,8 +19,8 @@ import java.io.InputStreamReader;
  * @see [相关类/方法]（可选）
  * @since [产品/模块版本] （可选）
  */
-public class ClientServerTest {
-    private static final Logger log = LoggerFactory.getLogger(ClientServerTest.class);
+public class JavaClientServerTest {
+    private static final Logger log = LoggerFactory.getLogger(JavaClientServerTest.class);
     @Test
     public void testListen() throws IOException {
         ClientServerConfig config =  ConfigUtil.loadConfig();
@@ -28,7 +28,7 @@ public class ClientServerTest {
             config = ClientServerConfig.initNew();
         }
 
-        ClientServer clientServer = new ClientServer();
+        JavaClientServer clientServer = new JavaClientServer();
         clientServer.startListener(config);
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         log.info("按回车键结束程序 ");

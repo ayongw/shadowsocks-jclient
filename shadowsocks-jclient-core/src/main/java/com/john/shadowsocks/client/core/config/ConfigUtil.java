@@ -1,7 +1,7 @@
 package com.john.shadowsocks.client.core.config;
 
 import com.john.shadowsocks.client.core.AppConst;
-import com.john.shadowsocks.client.core.ClientServer;
+import com.john.shadowsocks.client.core.JavaClientServer;
 import net.sf.json.JSONObject;
 import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
@@ -47,7 +47,7 @@ public class ConfigUtil {
             String configTxt = IOUtils.toString(inputStream, AppConst.DEFAULT_CHARSET);
             JSONObject jsonObject = JSONObject.fromObject(configTxt);
             Map classMap = new HashMap();
-            classMap.put("configs", ClientServer.class);
+            classMap.put("configs", JavaClientServer.class);
 
             ClientServerConfig config = (ClientServerConfig) JSONObject.toBean(jsonObject, ClientServerConfig.class, classMap);
             return config;
