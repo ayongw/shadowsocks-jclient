@@ -75,7 +75,7 @@ public class SelectEventHandler implements EventHandler<SelectEvent> {
         if (key.isAcceptable()) {
             JavaClientServer.getInstance().addEvent(new AcceptEvent());
         } else if (key.isReadable()) {
-            JavaClientServer.getInstance().addEvent(new ReadEvent());
+            JavaClientServer.getInstance().addEvent(new ReadEvent(key));
         }
     }
 }
